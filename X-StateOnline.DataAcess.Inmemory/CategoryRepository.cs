@@ -11,66 +11,71 @@ namespace X_StateOnline.DataAcess.Inmemory
     public class CategoryRepository
     {
         ObjectCache cache = MemoryCache.Default;
-        List<ProductCategory> categories = new List<ProductCategory>();
+        List<ProductCategory> productCategories;
+
         public CategoryRepository()
         {
-            categories = cache["categories"] as List<ProductCategory>;
-            if (categories == null)
+            productCategories = cache["productCategories"] as List<ProductCategory>;
+            if (productCategories == null)
             {
-                categories = new List<ProductCategory>();
+                productCategories = new List<ProductCategory>();
             }
         }
 
         public void Commit()
         {
-            cache["categories"] = categories;
+            cache["productCategories"] = productCategories;
         }
 
-        public void Insert(ProductCategory c)
+        public void Insert(ProductCategory p)
         {
-            categories.Add(c);
+            productCategories.Add(p);
         }
 
-        public void Update(ProductCategory category)
+        public void Update(ProductCategory productCategory)
         {
-            ProductCategory categoryToUpdate = categories.Find(c => c.Id == category.Id);
-            if (categoryToUpdate != null)
+            ProductCategory productCategoryToUpdate = productCategories.Find(p => p.Id == productCategory.Id);
+            if (productCategoryToUpdate != null)
             {
-                categoryToUpdate = category;
+                productCategoryToUpdate = productCategory;
             }
             else
             {
-                throw new Exception("Category Was not Find");
+                throw new Exception("Category Not Found");
             }
+
         }
+
         public ProductCategory Find(string Id)
         {
-            ProductCategory category = categories.Find(c => c.Id == Id);
-            if (category != null)
+            ProductCategory productCategory = productCategories.Find(p => p.Id == Id);
+            if (productCategory != null)
             {
-                return category;
+                return productCategory;
             }
             else
             {
-                throw new Exception("Category Was not Find");
+                throw new Exception("Category not found");
             }
         }
+
         public IQueryable<ProductCategory> Collection()
         {
-            return categories.AsQueryable();
+            return productCategories.AsQueryable();
         }
 
         public void Delete(string Id)
         {
-            ProductCategory categoryToDelete = categories.Find(c => c.Id == Id);
-            if (categoryToDelete != null)
+            ProductCategory productCategoryToDelete = productCategories.Find(p => p.Id == Id);
+            if (productCategoryToDelete != null)
             {
-                categories.Remove(categoryToDelete);
+                productCategories.Remove(productCategoryToDelete);
             }
             else
             {
-                throw new Exception("Category Was not Find");
+                throw new Exception("Category Not Found");
             }
+
         }
     }
 }
