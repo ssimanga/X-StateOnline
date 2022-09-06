@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using X_StateOnline.Core.Models;
+using X_StateOnline.Core.ViewModels;
 using X_StateOnline.DataAcess.Inmemory;
 
 namespace X_StateOnline.UI.Controllers
@@ -11,9 +12,11 @@ namespace X_StateOnline.UI.Controllers
     public class ProductController : Controller
     {
         ProductRepository context;
+        CategoryRepository productCategories;
         public ProductController()
         {
             context = new ProductRepository();
+            productCategories = new CategoryRepository();
         }
         // GET: Product
         public ActionResult Index()
@@ -23,7 +26,10 @@ namespace X_StateOnline.UI.Controllers
         }
         public ActionResult Create()
         {
-            return View();
+            ProductVM viewModel = new ProductVM();
+            viewModel.Product = new Product();
+            viewModel.ProductCategories = productCategories.Collection();
+            return View(viewModel);
         }
         [HttpPost]
         public ActionResult Create(Product product)
@@ -49,7 +55,10 @@ namespace X_StateOnline.UI.Controllers
             }
             else
             {
-                return View(product);
+                ProductVM viewModel = new ProductVM();
+                viewModel.Product = product;
+                viewModel.ProductCategories = productCategories.Collection();
+                return View(viewModel);
             }
         }
         [HttpPost]
