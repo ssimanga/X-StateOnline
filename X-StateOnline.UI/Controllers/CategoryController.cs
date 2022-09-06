@@ -27,15 +27,15 @@ namespace X_StateOnline.UI.Controllers
             return View(productCategory);
         }
         [HttpPost]
-        public ActionResult Create(ProductCategory category)
+        public ActionResult Create(ProductCategory productCategory)
         {
             if (!ModelState.IsValid)
             {
-                return View(category);
+                return View(productCategory);
             }
             else
             {
-                context.Insert(category);
+                context.Insert(productCategory);
                 context.Commit();
                 return RedirectToAction("Index");
             }
@@ -43,18 +43,18 @@ namespace X_StateOnline.UI.Controllers
 
         public ActionResult Edit(string Id)
         {
-            ProductCategory category = context.Find(Id);
-            if (category == null)
+            ProductCategory productCategory = context.Find(Id);
+            if (productCategory == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(category);
+                return View(productCategory);
             }
         }
         [HttpPost]
-        public ActionResult Edit(ProductCategory category, string Id)
+        public ActionResult Edit(ProductCategory productCategory, string Id)
         {
             ProductCategory CategoryToEdit = context.Find(Id);
             if (CategoryToEdit == null)
@@ -63,11 +63,7 @@ namespace X_StateOnline.UI.Controllers
             }
             else
             {
-                if (!ModelState.IsValid)
-                {
-                    return View(category);
-                }
-                CategoryToEdit.Category = category.Category;
+                CategoryToEdit.Category = productCategory.Category;
                 context.Commit();
                 return RedirectToAction("Index");
             }
