@@ -4,11 +4,13 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
+using X_StateOnline.Core.Contracts;
 using X_StateOnline.Core.Models;
+
 
 namespace X_StateOnline.DataAcess.Inmemory
 {
-   public class InMemoryRepository<T> where T : BaseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -17,7 +19,7 @@ namespace X_StateOnline.DataAcess.Inmemory
         {
             className = typeof(T).Name;
             items = cache[className] as List<T>;
-            if(items == null)
+            if (items == null)
             {
                 items = new List<T>();
             }

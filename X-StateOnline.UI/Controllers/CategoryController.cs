@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using X_StateOnline.Core.Contracts;
 using X_StateOnline.Core.Models;
 using X_StateOnline.DataAcess.Inmemory;
 
@@ -10,10 +11,10 @@ namespace X_StateOnline.UI.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryRepository context;
-        public CategoryController()
+        IRepository<ProductCategory> context;
+        public CategoryController(IRepository<ProductCategory> categoryContext)
         {
-            context = new CategoryRepository();
+            context = categoryContext;
         }
         // GET: Category
         public ActionResult Index()
