@@ -3,6 +3,7 @@ using System;
 using Unity;
 using X_StateOnline.Core.Contracts;
 using X_StateOnline.Core.Models;
+using X_StateOnline.DataAccess.SQL;
 using X_StateOnline.DataAcess.Inmemory;
 
 namespace X_StateOnline.UI
@@ -45,8 +46,8 @@ namespace X_StateOnline.UI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IRepository<Product>, InMemoryRepository<Product>>();
-            container.RegisterType<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
+            container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
+            container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
         }
     }
 }
