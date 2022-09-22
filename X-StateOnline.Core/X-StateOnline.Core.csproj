@@ -49,6 +49,8 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CartItemVM.cs" />
+    <Compile Include="ViewModels\CartSummaryVM.cs" />
     <Compile Include="ViewModels\ProductListVM.cs" />
     <Compile Include="ViewModels\ProductVM.cs" />
   </ItemGroup>
