@@ -10,7 +10,7 @@ using X_StateOnline.Core.ViewModels;
 
 namespace X_StateOnline.Services
 {
-   public class CartService
+   public class CartService: ICartService
     {
         IRepository<Product> productContext;
         IRepository<Cart> cartContext;

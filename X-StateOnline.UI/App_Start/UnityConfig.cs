@@ -5,6 +5,7 @@ using X_StateOnline.Core.Contracts;
 using X_StateOnline.Core.Models;
 using X_StateOnline.DataAccess.SQL;
 using X_StateOnline.DataAcess.Inmemory;
+using X_StateOnline.Services;
 
 namespace X_StateOnline.UI
 {
@@ -48,6 +49,9 @@ namespace X_StateOnline.UI
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
             container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
+            container.RegisterType<IRepository<Cart>, SQLRepository<Cart>>();
+            container.RegisterType<IRepository<CartItem>, SQLRepository<CartItem>>();
+            container.RegisterType<ICartService, CartService>();
         }
     }
 }
