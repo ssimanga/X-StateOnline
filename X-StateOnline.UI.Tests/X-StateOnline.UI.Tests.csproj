@@ -47,6 +47,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
@@ -89,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mocks\MockContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -99,6 +101,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\X-StateOnline.Core\X-StateOnline.Core.csproj">
+      <Project>{B5354234-9590-4012-90E7-A9818F2A7B2E}</Project>
+      <Name>X-StateOnline.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\X-StateOnline.UI\X-StateOnline.UI.csproj">
       <Project>{BCC5AC2A-50CA-4034-922A-2A44A13699DF}</Project>
       <Name>X-StateOnline.UI</Name>
