@@ -53,6 +53,8 @@ namespace X_StateOnline.UI
             container.RegisterType<IRepository<CartItem>, SQLRepository<CartItem>>();
             container.RegisterType<ICartService, CartService>();
             container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
+            container.RegisterType<IRepository<Order>, SQLRepository<Order>>();
+            container.RegisterType<IOrderService, OrderService>();
         }
     }
 }

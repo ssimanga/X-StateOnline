@@ -137,7 +137,7 @@ namespace X_StateOnline.Services
                 return model;
             }
         }
-        public void Clear(HttpContextBase httpContext)
+        public void ClearCart(HttpContextBase httpContext)
         {
             Cart cart = GetCart(httpContext, false);
             cart.CartItems.Clear();
