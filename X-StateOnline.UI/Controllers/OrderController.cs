@@ -23,12 +23,26 @@ namespace X_StateOnline.UI.Controllers
         }
         public ActionResult UpdateOrder(string Id)
         {
+            ViewBag.Status = new List<string>()
+            {
+                "Order Received",
+                "Payment Processed",
+                "Order Shipped",
+                "Order Completed"
+            };
             Order order = orderService.GetOrder(Id);
             return View(order);
         }
         [HttpPost]
         public ActionResult UpdateOrder(Order updatedOrder, string Id)
         {
+            ViewBag.Status = new List<string>()
+            {
+                "Order Received",
+                "Payment Processed",
+                "Order Shipped",
+                "Order Completed"
+            };
             Order order = orderService.GetOrder(Id);
             order.OrderStatus = updatedOrder.OrderStatus;
             orderService.UpdateOrder(order);
