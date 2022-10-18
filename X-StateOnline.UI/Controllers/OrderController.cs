@@ -8,6 +8,7 @@ using X_StateOnline.Core.Models;
 
 namespace X_StateOnline.UI.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class OrderController : Controller
     {
         // GET: Order

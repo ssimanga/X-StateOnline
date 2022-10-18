@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace X_StateOnline.UI.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         // GET: Admin

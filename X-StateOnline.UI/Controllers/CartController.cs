@@ -42,7 +42,7 @@ namespace X_StateOnline.UI.Controllers
             var cartSummary = cartService.GetCartSummary(this.HttpContext);
             return PartialView(cartSummary);
         }
-
+        [Authorize]
         public ActionResult Checkout()
         {
             Customer customer = customers.Collection().FirstOrDefault(c => c.Email == User.Identity.Name);

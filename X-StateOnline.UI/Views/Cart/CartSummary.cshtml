@@ -1,0 +1,12 @@
+﻿@model X_StateOnline.Core.ViewModels.CartSummaryVM
+    <ul class="navbar navbar-nav text-right" style="float:right;margin-top:15px; list-style:none;">
+        <li>
+            <a href="@Url.Action("Index", "Cart")">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+                <span class="badge">@Model.CartCount</span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Cart")">@String.Format("{0:c}", Model.CartTotal)</a>
+        </li>
+    </ul>

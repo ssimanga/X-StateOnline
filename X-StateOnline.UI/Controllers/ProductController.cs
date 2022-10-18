@@ -11,6 +11,7 @@ using X_StateOnline.DataAcess.Inmemory;
 
 namespace X_StateOnline.UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         IRepository<Product> context;
